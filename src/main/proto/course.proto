@@ -1,0 +1,25 @@
+syntax="proto3";
+
+
+package com.university.userservice.grpc.course;
+option java_multiple_files = true;
+option java_package = "com.university.userservice.grpc.course";
+
+
+message CourseRequest {
+  string title = 1;
+  string teacherId = 2;
+  string teacherFullName = 3;
+  string description = 4;
+  string startAt = 5;
+  string endsAt = 6;
+  string directionTitle = 7;
+}
+
+message CourseResponse {
+  string courseId = 1;
+}
+
+service CourseService {
+  rpc createCourse(CourseRequest) returns (CourseResponse);
+}

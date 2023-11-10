@@ -1,0 +1,39 @@
+spring:
+    mvc:
+        format:
+            date-time: iso
+    security:
+        oauth2:
+            resource-server:
+                jwt:
+                    issuer-uri: ${ISSUER:http://localhost:9000}
+        cors:
+            allowed-origins:
+                - "https://sovcomstudents.ru"
+                - "http://sovcomstudents.ru"
+                - "http://*.sovcomstudents.ru"
+                - "https://*.sovcomstudents.ru"
+                - "http://localhost:3000"
+    data:
+        mongodb:
+            uri: ${MONGODB_URI:mongodb://localhost:27017}
+            database: courses
+    messages:
+        basename: messages
+        use-code-as-default-message: true
+logging:
+    level:
+        org:
+            springframework:
+                data:
+                    mongodb:
+                        core:
+                            MongoTemplate: DEBUG
+
+grpc:
+    port: ${GRPC_PORT:7090}
+server:
+    port: ${APP_PORT:8090}
+springdoc:
+    swagger-ui:
+        config-url: https://sovcomstudents.ru/api/courses/v3/api-docs
